@@ -73,6 +73,7 @@ on run argv
 			tell application "Spotify"
 				set sound volume to newVolume
 			end tell
+			return "Changed volume to " & newVolume
 			
 		else if command is equal to "info" then
 			tell application "Spotify" 
