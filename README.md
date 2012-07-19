@@ -7,8 +7,8 @@ The scenario that it was originally designed for is to control Spotify
 which is playing on a Mac,  via ssh, while working on a Linux computer 
 on the other side  of the room.
 
-Currently supported functions are: play/pause, next track and previous 
-track.
+Currently supported functions are: play/pause, next/previous 
+track, jumping in time and changing volume.
 
 Tested to work on OS X Lion, Spotify 0.8.4.93 and iTunes 10.6.3. No 
 guarantees.
