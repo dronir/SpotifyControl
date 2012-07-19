@@ -34,14 +34,14 @@ with possible updates to the script.
 ## Usage
 
 * To start Spotify playback, type `spotify start` or `spotify play`. 
-If Spotify is not running, it will start.
+If you do this locally and Spotify is not running, it will start. 
+Remotely, Spotify will not start properly.
 * To pause Spotify playback, type `spotify stop` or `spotify pause`.
 * To go to the next track, type `spotify next`.
 * To go to the previous track, type `spotify previous` or `spotify 
 prev`.
 * To print information about the currently playing track, 
 type `spotify info`
-* To quit spotify, type `spotify quit`
 
 ### Over SSH
 
