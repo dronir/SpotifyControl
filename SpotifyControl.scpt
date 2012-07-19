@@ -106,12 +106,16 @@ on run argv
 				set info to info & "\n Now at:   " & nowAt
 				set info to info & "\n Player:   " & player state
 				set info to info & "\n URI:      " & spotify url of current track
+				if shuffling then set info to info & "\n Shuffle is on."
+				if repeating then set info to info & "\n Repeat is on."
 			end tell
 			return info
 		end if
 		tell application "Spotify"
+			set shuf to ""
+			if shuffling then set shuf to "\n[shuffle on]"
 			if player state as text is equal to "playing"
-				return "Now playing: " & artist of current track & " - " & name of current track
+				return "Now playing: " & artist of current track & " - " & name of current track & shuf
 			end if
 		end tell
 	end using terms from
