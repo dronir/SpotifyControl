@@ -39,3 +39,6 @@ with possible updates to the script.
 * To go to the previous track, type `spotify prev` or `spotify 
 previous`.
 
+### Over SSH
+
+To enable the SSH server on OS X, go to Sharing in the System Preferences and enable Remote Login. The Sharing screen will also then tell you the command to use to connect to your Mac in the local network.
