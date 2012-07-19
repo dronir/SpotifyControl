@@ -48,6 +48,8 @@ where N is the track position in seconds.
 seconds to jump ahead.
 * To rewind, type `spotify rewind N` where N is the number of
 seconds to jump backwards.
+* To change volume, type `spotify volume N` where N is a number between
+0 and 100.
 
 ### Over SSH
 

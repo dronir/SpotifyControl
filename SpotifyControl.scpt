@@ -17,6 +17,7 @@ on run argv
 			tell application "Spotify"
 				previous track
 			end tell
+			
 		else if command is equal to "jump"
 			set jumpTo to item 2 of argv as real
 			tell application "Spotify"
@@ -64,6 +65,15 @@ on run argv
 				set player position to realT
 				return "Jumped to " & newTime
 			end tell
+			
+		else if command is equal to "volume" then
+			set newVolume to item 2 of argv as real
+			if newVolume < 0 then set newVolume to 0
+			if newVolume > 100 then set newVolume to 100
+			tell application "Spotify"
+				set sound volume to newVolume
+			end tell
+			
 		else if command is equal to "info" then
 			tell application "Spotify" 
 				set myTrack to name of current track
