@@ -33,12 +33,18 @@ with possible updates to the script.
 
 ## Usage
 
-* To start Spotify playback, type `spotify start` or `spotify play`.
+* To start Spotify playback, type `spotify start` or `spotify play`. 
+If Spotify is not running, it will start.
 * To pause Spotify playback, type `spotify stop` or `spotify pause`.
 * To go to the next track, type `spotify next`.
-* To go to the previous track, type `spotify prev` or `spotify 
-previous`.
+* To go to the previous track, type `spotify previous` or `spotify 
+prev`.
+* To print information about the currently playing track, 
+type `spotify info`
+* To quit spotify, type `spotify quit`
 
 ### Over SSH
 
-To enable the SSH server on OS X, go to Sharing in the System Preferences and enable Remote Login. The Sharing screen will also then tell you the command to use to connect to your Mac in the local network.
+To enable the SSH server on OS X, go to Sharing in the System Preferences
+and enable Remote Login. The Sharing screen will also then tell you the
+command to use to connect to your Mac in the local network.
