@@ -47,7 +47,7 @@ on run argv
 				set nS to round (realT mod 60) rounding down
 				set newTime to nM as text & "min " & nS as text & "s"
 				set player position to realT
-				return "Jumped to " & newTime
+				return "Jumped forward "& jumpTo &" seconds to " & newTime
 			end tell
 		else if command is equal to "rewind"
 			set jumpTo to item 2 of argv as real
@@ -63,7 +63,7 @@ on run argv
 				set nS to round (realT mod 60) rounding down
 				set newTime to nM as text & "min " & nS as text & "s"
 				set player position to realT
-				return "Jumped to " & newTime
+				return "Jumped backwards "& jumpTo &" seconds to " & newTime
 			end tell
 			
 		else if command is equal to "volume" then
