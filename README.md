@@ -8,7 +8,7 @@ which is playing on a Mac,  via ssh, while working on a Linux computer
 on the other side  of the room.
 
 Currently supported functions are: play/pause, next/previous 
-track, jumping in time and changing volume.
+track, jumping in time, toggling shuffle/repeat and changing volume.
 
 Tested to work on OS X Lion, Spotify 0.8.4.93 and iTunes 10.6.3. No 
 guarantees.
@@ -50,6 +50,8 @@ seconds to jump ahead.
 seconds to jump backwards.
 * To change volume, type `spotify volume N` where N is a number between
 0 and 100.
+* To toggle shuffle, type `spotify shuffle`.
+* To toggle repeat, type `spotify repeat`.
 
 ### Over SSH
 

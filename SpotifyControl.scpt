@@ -74,6 +74,18 @@ on run argv
 				set sound volume to newVolume
 			end tell
 			return "Changed volume to " & newVolume
+		
+		else if command is equal to "shuffle" then
+			tell application "Spotify"
+				set shuffling to not shuffling
+				return "Shuffle is now " & shuffling
+			end tell
+
+		else if command is equal to "repeat" then
+			tell application "Spotify"
+				set repeating to not repeating
+				return "Repeat is now " & repeating
+			end tell
 			
 		else if command is equal to "info" then
 			tell application "Spotify" 
