@@ -42,6 +42,12 @@ Remotely, Spotify will not start properly.
 prev`.
 * To print information about the currently playing track, 
 type `spotify info`
+* To jump to a particular time in the track, type `spotify jump N`,
+where N is the track position in seconds.
+* To fast forward, type `spotify forward N` where N is the number of
+seconds to jump ahead.
+* To rewind, type `spotify rewind N` where N is the number of
+seconds to jump backwards.
 
 ### Over SSH
 
