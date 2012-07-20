@@ -22,48 +22,50 @@ on run argv
 			set jumpTo to item 2 of argv as real
 			tell application "Spotify"
 				set tMax to duration of current track
-				if jumpTo < tMax
-					set realT to jumpTo
-				else
+				if jumpTo > tMax
 					return "Can't jump past end of track."
+				else if jumpTo < 0
+					return "Can't jump past start of track."
 				end if
-				set nM to round (realT / 60) rounding down
-				set nS to round (realT mod 60) rounding down
+				set nM to round (jumpTo / 60) rounding down
+				set nS to round (jumpTo mod 60) rounding down
 				set newTime to nM as text & "min " & nS as text & "s"
-				set player position to realT
+				set player position to jumpTo
 				return "Jumped to " & newTime
 			end tell
 		else if command is equal to "forward"
-			set jumpTo to item 2 of argv as real
+			set jump to item 2 of argv as real
 			tell application "Spotify"
 				set now to player position
 				set tMax to duration of current track
-				if now + jumpTo < tMax
-					set realT to now + jumpTo
-				else
+				set jumpTo to now + jump
+				if jumpTo > tMax
 					return "Can't jump past end of track."
+				else if jumpTo < 0
+					set jumpTo to 0
 				end if
-				set nM to round (realT / 60) rounding down
-				set nS to round (realT mod 60) rounding down
+				set nM to round (jumpTo / 60) rounding down
+				set nS to round (jumpTo mod 60) rounding down
 				set newTime to nM as text & "min " & nS as text & "s"
-				set player position to realT
-				return "Jumped forward "& jumpTo &" seconds to " & newTime
+				set player position to jumpTo
+				return "Jumped to " & newTime
 			end tell
 		else if command is equal to "rewind"
-			set jumpTo to item 2 of argv as real
+			set jump to item 2 of argv as real
 			tell application "Spotify"
 				set now to player position
 				set tMax to duration of current track
-				if now - jumpTo > 0
-					set realT to now - jumpTo
-				else
-					set realT to 0
+				set jumpTo to now - jump
+				if jumpTo > tMax
+					return "Can't jump past end of track."
+				else if jumpTo < 0
+					set jumpTo to 0
 				end if
-				set nM to round (realT / 60) rounding down
-				set nS to round (realT mod 60) rounding down
+				set nM to round (jumpTo / 60) rounding down
+				set nS to round (jumpTo mod 60) rounding down
 				set newTime to nM as text & "min " & nS as text & "s"
-				set player position to realT
-				return "Jumped backwards "& jumpTo &" seconds to " & newTime
+				set player position to jumpTo
+				return "Jumped to " & newTime
 			end tell
 			
 		else if command is equal to "volume" then
