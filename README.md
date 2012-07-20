@@ -1,6 +1,6 @@
 # SpotifyControl.scpt - Control Spotify in OS X Terminal
 
-This is a simple AppleScript for basic control of Spotify through
+This is a AppleScript for controlling Spotify through
 Terminal.app.
 
 The scenario for which it was originally designed is controlling Spotify,
@@ -9,9 +9,10 @@ on the other side  of the room.
 
 Currently supported functions are: play/pause, next/previous 
 track, jumping in time, toggling shuffle/repeat and changing volume.
+This pretty much covers everything the AppleScript hooks of Spotify
+allow.
 
-Tested to work on OS X Lion, Spotify 0.8.4.93 and iTunes 10.6.3. No 
-guarantees.
+Tested to work on OS X Lion and Spotify 0.8.4.93. No guarantees.
 
 You may use, adapt, modify etc. any way you want.
 
