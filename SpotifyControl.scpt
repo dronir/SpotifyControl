@@ -3,20 +3,17 @@ on run argv
 	using terms from application "Spotify"
 		set info to "Error."
 		if command is equal to "play" or command is equal to "start" then
-			tell application "Spotify"
-				play
-			end tell
+			tell application "Spotify" to play
+			
 		else if command is equal to "pause" or command is equal to "stop" then
 			tell application "Spotify" to pause
 			return "Paused."
+			
 		else if command is equal to "next" then
-			tell application "Spotify"
-				next track
-			end tell
+			tell application "Spotify" to next track
+
 		else if command is equal to "previous" or command is equal to "prev" then
-			tell application "Spotify"
-				previous track
-			end tell
+			tell application "Spotify" to previous track
 			
 		else if command is equal to "jump"
 			set jumpTo to item 2 of argv as real
@@ -33,6 +30,7 @@ on run argv
 				set player position to jumpTo
 				return "Jumped to " & newTime
 			end tell
+			
 		else if command is equal to "forward"
 			set jump to item 2 of argv as real
 			tell application "Spotify"
@@ -50,6 +48,7 @@ on run argv
 				set player position to jumpTo
 				return "Jumped to " & newTime
 			end tell
+			
 		else if command is equal to "rewind"
 			set jump to item 2 of argv as real
 			tell application "Spotify"
@@ -113,6 +112,7 @@ on run argv
 			end tell
 			return info
 		end if
+		
 		tell application "Spotify"
 			set shuf to ""
 			if shuffling then set shuf to "\n[shuffle on]"
