@@ -3,7 +3,7 @@
 This is a simple AppleScript for basic control of Spotify through
 Terminal.app.
 
-The scenario that it was originally designed for is to control Spotify 
+The scenario for which it originally designed for is controlling Spotify,
 which is playing on a Mac,  via ssh, while working on a Linux computer 
 on the other side  of the room.
 
