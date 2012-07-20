@@ -98,14 +98,14 @@ on run argv
 				set nM to round (player position / 60) rounding down
 				set nS to round (player position mod 60) rounding down
 				set nowAt to nM as text & "min " & nS as text & "s"
-				set info to "Now playing:"
+				set info to "Current track:"
 				set info to info & "\n Artist:   " & myArtist
 				set info to info & "\n Track:    " & myTrack
 				set info to info & "\n Album:    " & myAlbum 
+				set info to info & "\n URI:      " & spotify url of current track
 				set info to info & "\n Duration: " & mytime & " ("& duration of current track & " seconds)" 
 				set info to info & "\n Now at:   " & nowAt
 				set info to info & "\n Player:   " & player state
-				set info to info & "\n URI:      " & spotify url of current track
 				if shuffling then set info to info & "\n Shuffle is on."
 				if repeating then set info to info & "\n Repeat is on."
 			end tell
