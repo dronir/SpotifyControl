@@ -4,15 +4,16 @@ This is a AppleScript for controlling Spotify through
 Terminal.app.
 
 The scenario for which it was originally designed is controlling Spotify,
-which is playing on a Mac,  via ssh, while working on a Linux computer 
-on the other side  of the room.
+which is playing on a Mac, via ssh, while working on a Linux computer 
+on the other side of the room.
 
 Currently supported functions are: play/pause, next/previous 
 track, jumping in time, toggling shuffle/repeat and changing volume.
 This pretty much covers everything the AppleScript hooks of Spotify
 allow.
 
-Tested to work on OS X Lion and Spotify 0.8.4.93. No guarantees.
+Tested to work on OS X Lion and Mountain Lion and Spotify 0.8.4.
+No guarantees.
 
 You may use, adapt, modify etc. any way you want.
 
@@ -53,6 +54,7 @@ seconds to jump backwards.
 0 and 100.
 * To toggle shuffle, type `spotify shuffle`.
 * To toggle repeat, type `spotify repeat`.
+* To show a list of these commands, just type `spotify`.
 
 ### Over SSH
 

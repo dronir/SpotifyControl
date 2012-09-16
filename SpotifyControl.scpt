@@ -1,4 +1,18 @@
 on run argv
+	if count of argv is equal to 0 then
+		set msg to "Use the following commands:\n"
+		set msg to msg & "  start / play    - Start playback\n"
+		set msg to msg & "  pause / stop    - Stop playback\n"
+		set msg to msg & "  next            - Next track\n"
+		set msg to msg & "  previous / prev - Previous track\n"
+		set msg to msg & "  info            - Print track info\n"
+		set msg to msg & "  jump N          - Jump to N seconds in the song\n"
+		set msg to msg & "  forward N       - Jump N seconds forwards\n"
+		set msg to msg & "  rewind N        - Jump N seconds backwards\n"
+		set msg to msg & "  shuffle         - Toggle shuffle\n"
+		set msg to msg & "  repeat          - Toggle repeat\n"
+		return msg
+	end if
 	set command to item 1 of argv
 	using terms from application "Spotify"
 		set info to "Error."
