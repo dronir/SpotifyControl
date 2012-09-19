@@ -37,7 +37,7 @@ with possible updates to the script.
 
 * To start Spotify playback, type `spotify start` or `spotify play`. 
 If you do this locally and Spotify is not running, it will start. 
-Remotely, Spotify will not start properly.
+Remotely, Spotify will not start properly. Optionally, pass a Spotify URI as a second argument.
 * To pause Spotify playback, type `spotify stop` or `spotify pause`.
 * To go to the next track, type `spotify next`.
 * To go to the previous track, type `spotify previous` or `spotify 
