@@ -1,10 +1,11 @@
 on run argv
 	if count of argv is equal to 0 then
 		set msg to "Use the following commands:\n"
-		set msg to msg & "  start / play [uri] - Start playback / play uri\n"
-		set msg to msg & "  pause / stop       - Stop playback\n"
+		set msg to msg & "  start, play [uri]  - Start playback / play uri\n"
+		set msg to msg & "  pause, stop        - Stop playback\n"
+		set msg to msg & "  play/pause         - Toggle playback\n"
 		set msg to msg & "  next               - Next track\n"
-		set msg to msg & "  previous / prev    - Previous track\n"
+		set msg to msg & "  previous, prev     - Previous track\n"
 		set msg to msg & "  info               - Print track info\n"
 		set msg to msg & "  jump N             - Jump to N seconds in the song\n"
 		set msg to msg & "  forward N          - Jump N seconds forwards\n"
@@ -23,6 +24,10 @@ on run argv
 				set uri to item 2 of argv
 				tell application "Spotify" to play track uri
 			end if	
+		else if command is equal to "play/pause" then
+			tell application "Spotify" to playpause
+			return "Toggled."
+			
 		else if command is equal to "pause" or command is equal to "stop" then
 			tell application "Spotify" to pause
 			return "Paused."
