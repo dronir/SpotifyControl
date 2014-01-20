@@ -12,6 +12,7 @@ on run argv
 		set msg to msg & "  rewind N           - Jump N seconds backwards\n"
 		set msg to msg & "  shuffle            - Toggle shuffle\n"
 		set msg to msg & "  repeat             - Toggle repeat\n"
+		set msg to msg & "  volume N           - Set Volume to N (0...100)\n"
 		return msg
 	end if
 	set command to item 1 of argv
