@@ -24,13 +24,8 @@ I am assuming that if you need to control Spotify through the terminal
 you know enough about terminal usage.
 
 The simplest way to install the script is just to just download the 
-script file from the GitHub page and add the line `alias 
+script file from the GitHub page, or clone the repository, and add the line `alias 
 spotify="osascript /path/to/SpotifyControl.scpt"` in your `.profile`.
-
-If you have `git`, even simpler will be to clone this repository with 
-`git clone git://github.com/dronir/SpotifyControl.git` and then edit 
-`.profile` as above. This will also make it easy to keep up to date 
-with possible updates to the script.
 
 
 ## Usage
