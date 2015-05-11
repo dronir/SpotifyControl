@@ -1,4 +1,4 @@
-# SpotifyControl - Control Spotify at OS X Terminal
+# Control Spotify at OS X Terminal
 
 This is a AppleScript for controlling Spotify through
 Terminal.app.
