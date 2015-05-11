@@ -1,25 +1,23 @@
 # Control Spotify at OS X Terminal
 
-An AppleScript for controlling Spotify through a terminal.
+An AppleScript for controlling Spotify through a terminal:
 
-> The scenario for which it was originally designed is controlling Spotify,
+```
+The scenario for which it was originally designed is controlling Spotify,
 which is playing on a Mac, via ssh, while working on a Linux machine 
 on the other side of the room.
+```
 
 Currently supported functions are: play/pause, next/previous 
 track, jumping in time, toggling shuffle/repeat and changing volume.
 This pretty much covers everything the AppleScript hooks of Spotify
 allow.
 
-Platforms that the script has been tested on:
+### Tested Platforms (Spotify 1.0.4.90)
 * OS X Yosemite (10.10)
 * OS X Mavericks (10.9)
 * OS X Mountain Lion (10.8)
 * OS X Lion (10.7)
-
-The script has tested, and works on OS X Lion, Mountain Lion, Yosemite and Spotify 0.8.4.
-No guarantees.
-
 
 ## Installation
 
