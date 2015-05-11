@@ -23,10 +23,9 @@ You may use, adapt, modify etc. any way you want.
 I am assuming that if you need to control Spotify through the terminal 
 you know enough about terminal usage.
 
-The simplest way to install the script is just to just download the 
-script file from the GitHub page, or clone the repository, `cd` into
- `SpotifyControl` directory, and run the command to make a symbolic 
- link into `/usr/local/bin/`:
+The simplest way to install the script is to `clone` the repository, 
+`cd` into the `SpotifyControl` directory, and run this command below 
+to make a symbolic link into `/usr/local/bin/`:
 
 ```bash
 ln -s $(pwd)/SpotifyControl /usr/local/bin/spotify
