@@ -1,4 +1,4 @@
-# SpotifyControl.scpt - Control Spotify in OS X Terminal
+# SpotifyControl - Control Spotify at OS X Terminal
 
 This is a AppleScript for controlling Spotify through
 Terminal.app.
@@ -24,8 +24,10 @@ I am assuming that if you need to control Spotify through the terminal
 you know enough about terminal usage.
 
 The simplest way to install the script is just to just download the 
-script file from the GitHub page, or clone the repository, and add the line `alias 
-spotify="osascript /path/to/SpotifyControl.scpt"` in your `.profile`.
+script file from the GitHub page, or clone the repository, `cd` into
+ `SpotifyControl` directory, and run the command 
+`ln -s $(pwd)/SpotifyControl /usr/local/bin/spotify` 
+to make a symbolic link into `/usr/local/bin/`.
 
 
 ## Usage
