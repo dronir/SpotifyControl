@@ -24,7 +24,7 @@ I am assuming that if you need to control Spotify through the terminal
 you know enough about terminal usage.
 
 The simplest way to install the script is to `clone` the repository, 
-`cd` into the `SpotifyControl` directory, and run this command below 
+`cd` into repository's directory, and run this command below 
 to make a symbolic link into `/usr/local/bin/`:
 
 ```bash
