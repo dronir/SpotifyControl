@@ -1,3 +1,5 @@
+#!/usr/bin/env osascript
+
 on run argv
 	if count of argv is equal to 0 then
 		set msg to "Use the following commands:\n"
