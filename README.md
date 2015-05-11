@@ -25,9 +25,12 @@ you know enough about terminal usage.
 
 The simplest way to install the script is just to just download the 
 script file from the GitHub page, or clone the repository, `cd` into
- `SpotifyControl` directory, and run the command 
-`ln -s $(pwd)/SpotifyControl /usr/local/bin/spotify` 
-to make a symbolic link into `/usr/local/bin/`.
+ `SpotifyControl` directory, and run the command to make a symbolic 
+ link into `/usr/local/bin/`:
+
+```bash
+ln -s $(pwd)/SpotifyControl /usr/local/bin/spotify
+```
 
 
 ## Usage
