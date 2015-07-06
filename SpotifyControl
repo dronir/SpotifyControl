@@ -25,21 +25,21 @@ on run argv
       else
         set uri to item 2 of argv
         tell application "Spotify" to play track uri
-      end if  
+      end if
     else if command is equal to "play/pause" then
       tell application "Spotify" to playpause
       return "Toggled."
-      
+
     else if command is equal to "pause" or command is equal to "stop" then
       tell application "Spotify" to pause
       return "Paused."
-      
+
     else if command is equal to "next" then
       tell application "Spotify" to next track
 
     else if command is equal to "previous" or command is equal to "prev" then
       tell application "Spotify" to previous track
-      
+
     else if command is equal to "jump"
       set jumpTo to item 2 of argv as real
       tell application "Spotify"
@@ -55,7 +55,7 @@ on run argv
         set player position to jumpTo
         return "Jumped to " & newTime
       end tell
-      
+
     else if command is equal to "forward"
       set jump to item 2 of argv as real
       tell application "Spotify"
@@ -73,7 +73,7 @@ on run argv
         set player position to jumpTo
         return "Jumped to " & newTime
       end tell
-      
+
     else if command is equal to "rewind"
       set jump to item 2 of argv as real
       tell application "Spotify"
@@ -91,7 +91,7 @@ on run argv
         set player position to jumpTo
         return "Jumped to " & newTime
       end tell
-      
+
     else if command is equal to "volume" then
       set newVolume to item 2 of argv as real
       if newVolume < 0 then set newVolume to 0
@@ -100,7 +100,7 @@ on run argv
         set sound volume to newVolume
       end tell
       return "Changed volume to " & newVolume
-    
+
     else if command is equal to "shuffle" then
       tell application "Spotify"
         set shuffling to not shuffling
@@ -112,9 +112,9 @@ on run argv
         set repeating to not repeating
         return "Repeat is now " & repeating
       end tell
-      
+
     else if command is equal to "info" then
-      tell application "Spotify" 
+      tell application "Spotify"
         set myTrack to name of current track
         set myArtist to artist of current track
         set myAlbum to album of current track
@@ -127,9 +127,9 @@ on run argv
         set info to "Current track:"
         set info to info & "\n Artist:   " & myArtist
         set info to info & "\n Track:    " & myTrack
-        set info to info & "\n Album:    " & myAlbum 
+        set info to info & "\n Album:    " & myAlbum
         set info to info & "\n URI:      " & spotify url of current track
-        set info to info & "\n Duration: " & mytime & " ("& duration of current track & " seconds)" 
+        set info to info & "\n Duration: " & mytime & " ("& duration of current track & " seconds)"
         set info to info & "\n Now at:   " & nowAt
         set info to info & "\n Player:   " & player state
         set info to info & "\n Volume:   " & sound volume
@@ -138,7 +138,7 @@ on run argv
       end tell
       return info
     end if
-    
+
     tell application "Spotify"
       set shuf to ""
       if shuffling then set shuf to "\n[shuffle on]"
