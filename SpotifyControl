@@ -59,7 +59,7 @@ on run argv
     else if command is equal to "forward"
       set jump to item 2 of argv as real
       tell application "Spotify"
-        set now to player position
+        set now to player position / 1000
         set tMax to duration of current track
         set jumpTo to now + jump
         if jumpTo > tMax
@@ -77,7 +77,7 @@ on run argv
     else if command is equal to "rewind"
       set jump to item 2 of argv as real
       tell application "Spotify"
-        set now to player position
+        set now to player position / 1000
         set tMax to duration of current track
         set jumpTo to now - jump
         if jumpTo > tMax
