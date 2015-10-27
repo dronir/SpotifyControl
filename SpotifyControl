@@ -14,6 +14,8 @@ on run argv
     set msg to msg & "  shuffle            - Toggle shuffle\n"
     set msg to msg & "  repeat             - Toggle repeat\n"
     set msg to msg & "  volume N           - Set Volume to N (0...100)\n"
+    set msg to msg & "  increasevolume N   - Increment Volume by N (0...100)\n"
+    set msg to msg & "  decreasevolume N   - Decrement Volume by N (0...100)\n"
     return msg
   end if
   set command to item 1 of argv
@@ -97,6 +99,28 @@ on run argv
       if newVolume < 0 then set newVolume to 0
       if newVolume > 100 then set newVolume to 100
       tell application "Spotify"
+        set sound volume to newVolume
+      end tell
+      return "Changed volume to " & newVolume
+
+    else if command is equal to "increasevolume" then
+      set volumeInc to item 2 of argv as real
+      tell application "Spotify"
+        set currentVolume to sound volume
+        set newVolume to currentVolume + volumeInc
+        if newVolume < 0 then set newVolume to 0
+        if newVolume > 100 then set newVolume to 100
+        set sound volume to newVolume
+      end tell
+      return "Changed volume to " & newVolume
+
+    else if command is equal to "decreasevolume" then
+      set volumeInc to item 2 of argv as real
+      tell application "Spotify"
+        set currentVolume to sound volume
+        set newVolume to currentVolume - volumeInc
+        if newVolume < 0 then set newVolume to 0
+        if newVolume > 100 then set newVolume to 100
         set sound volume to newVolume
       end tell
       return "Changed volume to " & newVolume
