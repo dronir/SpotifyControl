@@ -98,6 +98,31 @@ on run argv
       if newVolume > 100 then set newVolume to 100
       tell application "Spotify"
         set sound volume to newVolume
+        do shell script "echo " & newVolume & " > /tmp/SpotifyControl_currentvolume.txt"
+      end tell
+      return "Changed volume to " & newVolume
+
+    else if command is equal to "increasevolume" then
+      set volumeInc to item 2 of argv as real
+      set newVolume to do shell script "cat /tmp/SpotifyControl_currentvolume.txt"
+      set newVolume to newVolume + volumeInc
+      if newVolume < 0 then set newVolume to 0
+      if newVolume > 100 then set newVolume to 100
+      tell application "Spotify"
+        set sound volume to newVolume
+        do shell script "echo " & newVolume & " > /tmp/SpotifyControl_currentvolume.txt"
+      end tell
+      return "Changed volume to " & newVolume
+
+    else if command is equal to "decreasevolume" then
+      set volumeInc to item 2 of argv as real
+      set newVolume to do shell script "cat /tmp/SpotifyControl_currentvolume.txt"
+      set newVolume to newVolume + volumeInc
+      if newVolume < 0 then set newVolume to 0
+      if newVolume > 100 then set newVolume to 100
+      tell application "Spotify"
+        set sound volume to newVolume
+        do shell script "echo " & newVolume & " > /tmp/SpotifyControl_currentvolume.txt"
       end tell
       return "Changed volume to " & newVolume
 
