@@ -50,6 +50,10 @@ seconds to jump ahead.
 seconds to jump backwards.
 * To change volume, type `spotify volume N` where N is a number between
 0 and 100.
+* Increase volume, type `spotify increasevolume N` where N is a number between
+0 and 100 that you want to increment by.
+* Decrease volume, type `spotify decreasevolume N` where N is a number between
+0 and 100 that you want to decrement by.
 * To toggle shuffle, type `spotify shuffle`.
 * To toggle repeat, type `spotify repeat`.
 * To show a list of these commands, just type `spotify`.
