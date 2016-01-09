@@ -164,6 +164,7 @@ on run argv
     end if
 
     tell application "Spotify"
+      delay 0.1
       set shuf to ""
       if shuffling then set shuf to "\n[shuffle on]"
       if player state as text is equal to "playing"
