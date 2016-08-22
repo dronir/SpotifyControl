@@ -21,6 +21,7 @@ on run argv
   set command to item 1 of argv
   using terms from application "Spotify"
     set info to "Error."
+    -- Play
     if command is equal to "play" or command is equal to "start" then
       if count of argv is equal to 1 then
         tell application "Spotify" to play
@@ -28,20 +29,21 @@ on run argv
         set uri to item 2 of argv
         tell application "Spotify" to play track uri
       end if
+    -- Play/Pause 
     else if command is equal to "play/pause" then
       tell application "Spotify" to playpause
       return "Toggled."
-
+    -- Pause
     else if command is equal to "pause" or command is equal to "stop" then
       tell application "Spotify" to pause
       return "Paused."
-
+    -- Next
     else if command is equal to "next" then
       tell application "Spotify" to next track
-
+    -- Prev
     else if command is equal to "previous" or command is equal to "prev" then
       tell application "Spotify" to previous track
-
+    -- Jump
     else if command is equal to "jump"
       set jumpTo to item 2 of argv as real
       tell application "Spotify"
@@ -57,7 +59,7 @@ on run argv
         set player position to jumpTo
         return "Jumped to " & newTime
       end tell
-
+    -- Forward
     else if command is equal to "forward"
       set jump to item 2 of argv as real
       tell application "Spotify"
@@ -75,7 +77,7 @@ on run argv
         set player position to jumpTo
         return "Jumped to " & newTime
       end tell
-
+    -- Rewind
     else if command is equal to "rewind"
       set jump to item 2 of argv as real
       tell application "Spotify"
@@ -93,7 +95,7 @@ on run argv
         set player position to jumpTo
         return "Jumped to " & newTime
       end tell
-
+    -- Volume
     else if command is equal to "volume" then
       set newVolume to item 2 of argv as real
       if newVolume < 0 then set newVolume to 0
@@ -102,7 +104,7 @@ on run argv
         set sound volume to newVolume
       end tell
       return "Changed volume to " & newVolume
-
+    -- IncreaseVolume
     else if command is equal to "increasevolume" then
       set volumeInc to item 2 of argv as real
       tell application "Spotify"
@@ -113,7 +115,7 @@ on run argv
         set sound volume to newVolume
       end tell
       return "Changed volume to " & newVolume
-
+    -- Decrease Volume
     else if command is equal to "decreasevolume" then
       set volumeInc to item 2 of argv as real
       tell application "Spotify"
@@ -124,19 +126,19 @@ on run argv
         set sound volume to newVolume
       end tell
       return "Changed volume to " & newVolume
-
+    -- Shuffle
     else if command is equal to "shuffle" then
       tell application "Spotify"
         set shuffling to not shuffling
         return "Shuffle is now " & shuffling
       end tell
-
+    -- Repeat
     else if command is equal to "repeat" then
       tell application "Spotify"
         set repeating to not repeating
-        return "Repeat is now " & repeating
+        return "Repeat is now " & not repeating
       end tell
-
+    -- Info
     else if command is equal to "info" then
       tell application "Spotify"
         set myTrack to name of current track
