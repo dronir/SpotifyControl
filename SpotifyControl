@@ -130,13 +130,15 @@ on run argv
     else if command is equal to "shuffle" then
       tell application "Spotify"
         set shuffling to not shuffling
+        delay 0.1
         return "Shuffle is now " & shuffling
       end tell
     -- Repeat
     else if command is equal to "repeat" then
       tell application "Spotify"
         set repeating to not repeating
-        return "Repeat is now " & not repeating
+        delay 0.1
+        return "Repeat is now " & repeating
       end tell
     -- Info
     else if command is equal to "info" then
