@@ -170,9 +170,14 @@ on run argv
     tell application "Spotify"
       delay 0.1
       set shuf to ""
-      if shuffling then set shuf to "\n[shuffle on]"
+      if shuffling then 
+        set shuf to "\n[shuffle on]"
+        if repeating then set rpt to "[repeat on]"
+      else
+        if repeating then set rpt to "\n[repeat on]"
+      end if
       if player state as text is equal to "playing"
-        return "Now playing: " & artist of current track & " - " & name of current track & shuf
+        return "Now playing: " & artist of current track & " - " & name of current track & shuf & rpt
       end if
     end tell
   end using terms from
