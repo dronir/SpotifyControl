@@ -170,6 +170,7 @@ on run argv
     tell application "Spotify"
       delay 0.1
       set shuf to ""
+      set rpt to ""
       if shuffling then 
         set shuf to "\n[shuffle on]"
         if repeating then set rpt to "[repeat on]"
