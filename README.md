@@ -13,7 +13,7 @@ track, jumping in time, toggling shuffle/repeat and changing volume.
 This pretty much covers everything the AppleScript hooks of Spotify
 allow.
 
-### Tested Platforms (Spotify 1.0.34.146)
+### Tested Platforms (Spotify 1.0.34)
 * OS X El Captian (10.11)
 * OS X Yosemite (10.10)
 * OS X Mavericks (10.9)
