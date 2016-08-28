@@ -1,21 +1,27 @@
 #!/usr/bin/env osascript
 on run argv
+
+  set msg to "Use the following commands:\n"
+  set msg to msg & "  start, play track    [song name]      - Start playback / play uri\n"
+  set msg to msg & "  start, play artist   [artist name]    - Start playback / play uri\n"
+  set msg to msg & "  start, play album    [album name]     - Start playback / play uri\n"
+  set msg to msg & "  start, play playlist [playlist name]  - Start playback / play uri\n"
+  set msg to msg & "  start, play [uri]                     - Start playback / play uri\n"
+  set msg to msg & "  pause, stop                           - Stop playback\n"
+  set msg to msg & "  play/pause                            - Toggle playback\n"
+  set msg to msg & "  next                                  - Next track\n"
+  set msg to msg & "  previous, prev                        - Previous track\n"
+  set msg to msg & "  info                                  - Print track info\n"
+  set msg to msg & "  jump N                                - Jump to N seconds in the song\n"
+  set msg to msg & "  forward N                             - Jump N seconds forwards\n"
+  set msg to msg & "  rewind N                              - Jump N seconds backwards\n"
+  set msg to msg & "  shuffle                               - Toggle shuffle\n"
+  set msg to msg & "  repeat                                - Toggle repeat\n"
+  set msg to msg & "  volume N, up, down                    - Set Volume to N (0...100)\n"
+  set msg to msg & "  increasevolume N                      - Increment Volume by N (0...100)\n"
+  set msg to msg & "  decreasevolume N                      - Decrement Volume by N (0...100)\n"
+
   if count of argv is equal to 0 then
-    set msg to "Use the following commands:\n"
-    set msg to msg & "  start, play [uri]  - Start playback / play uri\n"
-    set msg to msg & "  pause, stop        - Stop playback\n"
-    set msg to msg & "  play/pause         - Toggle playback\n"
-    set msg to msg & "  next               - Next track\n"
-    set msg to msg & "  previous, prev     - Previous track\n"
-    set msg to msg & "  info               - Print track info\n"
-    set msg to msg & "  jump N             - Jump to N seconds in the song\n"
-    set msg to msg & "  forward N          - Jump N seconds forwards\n"
-    set msg to msg & "  rewind N           - Jump N seconds backwards\n"
-    set msg to msg & "  shuffle            - Toggle shuffle\n"
-    set msg to msg & "  repeat             - Toggle repeat\n"
-    set msg to msg & "  volume N, up, down - Set Volume to N (0...100)\n"
-    set msg to msg & "  increasevolume N   - Increment Volume by N (0...100)\n"
-    set msg to msg & "  decreasevolume N   - Decrement Volume by N (0...100)\n"
     return msg
   end if
   set command to item 1 of argv
@@ -173,6 +179,9 @@ on run argv
         if repeating then set info to info & "\n Repeat is on."
       end tell
       return info
+    else
+      log "Wrong Argument !\n"
+      return msg
     end if
 
     tell application "Spotify"
