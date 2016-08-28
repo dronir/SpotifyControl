@@ -36,6 +36,9 @@ ln -s $(pwd)/SpotifyControl /usr/local/bin/spotify
 * To start Spotify playback, type `spotify start` or `spotify play`. 
 If you do this locally and Spotify is not running, it will start. 
 Remotely, Spotify will not start properly. Optionally, pass a Spotify URI as a second argument.
+* To Search for track name and play, type `spotify play track [song name]`.
+* To Search for artist name and play, type `spotify play artist [artist name]`.
+* To Search for album name and play, type `spotify play album [album name]`.
 * To pause Spotify playback, type `spotify stop` or `spotify pause`.
 * To toggle playback, type `spotify play/pause`.
 * To go to the next track, type `spotify next`.
