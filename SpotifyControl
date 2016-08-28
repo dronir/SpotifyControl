@@ -5,7 +5,6 @@ on run argv
   set msg to msg & "  start, play track    [song name]      - Start playback / play uri\n"
   set msg to msg & "  start, play artist   [artist name]    - Start playback / play uri\n"
   set msg to msg & "  start, play album    [album name]     - Start playback / play uri\n"
-  set msg to msg & "  start, play playlist [playlist name]  - Start playback / play uri\n"
   set msg to msg & "  start, play [uri]                     - Start playback / play uri\n"
   set msg to msg & "  pause, stop                           - Stop playback\n"
   set msg to msg & "  play/pause                            - Toggle playback\n"
@@ -32,7 +31,31 @@ on run argv
       if count of argv is equal to 1 then
         tell application "Spotify" to play
       else
-        set uri to item 2 of argv
+        set m_type to item 2 of argv
+        set uri to m_type
+        set modes to {"artist", "album", "track"}
+        if modes contains m_type then
+          if count of argv is equal to 2 then
+            return "Searching argument is missing ..."
+          else
+            set q to ""
+            repeat with myArgv from 3 to (count of argv)
+            set q to q & " " & item myArgv of argv
+            end repeat
+            log "Searching " & m_type & "s for : " & q
+            set spotifySearchAPI to "\"https://api.spotify.com/v1/search\""
+            set uri to do shell script " curl s -G " & spotifySearchAPI & ¬
+                                        " --data-urlencode \"q=" & q & "\"" & ¬
+                                        " -d \"type=" & m_type & "&limit=1&offset=0\"" & ¬
+                                        " -H \"Accept: application/json\" | grep -E -o \"spotify:" & ¬
+                                        m_type & ":[a-zA-Z0-9]+\" -m 1"
+            if first word of uri is equal to "" then
+              return "No results when searching for" & q
+            else
+              set flag to true
+            end if
+          end if
+        end if
         tell application "Spotify" to play track uri
       end if
     -- Play/Pause 
