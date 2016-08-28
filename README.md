@@ -68,4 +68,4 @@ command to use to connect to your Mac in the local network.
 
 ## License
 
-You may use, adapt, modify, and etc. Any way you want ;)
+You may use, adapt, modify, and etc. Any way you want.
