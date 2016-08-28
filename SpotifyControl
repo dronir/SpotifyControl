@@ -47,15 +47,16 @@ on run argv
             end repeat
             log "Searching " & m_type & "s for : " & q
             set spotifySearchAPI to "\"https://api.spotify.com/v1/search\""
-            set uri to do shell script " curl s -G " & spotifySearchAPI & ¬
-                                        " --data-urlencode \"q=" & q & "\"" & ¬
-                                        " -d \"type=" & m_type & "&limit=1&offset=0\"" & ¬
-                                        " -H \"Accept: application/json\" | grep -E -o \"spotify:" & ¬
-                                        m_type & ":[a-zA-Z0-9]+\" -m 1"
-            if first word of uri is equal to "" then
+            try
+              set uri to do shell script  " curl s -G " & spotifySearchAPI & ¬
+                                          " --data-urlencode \"q=" & q & "\"" & ¬
+                                          " -d \"type=" & m_type & "&limit=1&offset=0\"" & ¬
+                                          " -H \"Accept: application/json\" | grep -E -o \"spotify:" & ¬
+                                          m_type & ":[a-zA-Z0-9]+\" -m 1"
+            on error
               return "No results when searching for" & q
-            else
-              set waitFlag to true
+            end try
+            set waitFlag to true
             end if
           end if
         end if
