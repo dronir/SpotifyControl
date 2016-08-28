@@ -43,7 +43,7 @@ on run argv
           else
             set q to ""
             repeat with myArgv from 3 to (count of argv)
-            set q to q & " " & item myArgv of argv
+            set q to q & item myArgv of argv & " "
             end repeat
             log "Searching " & m_type & "s for : " & q
             set spotifySearchAPI to "\"https://api.spotify.com/v1/search\""
@@ -54,10 +54,10 @@ on run argv
                                           " -H \"Accept: application/json\" | grep -E -o \"spotify:" & ¬
                                           m_type & ":[a-zA-Z0-9]+\" -m 1"
             on error
-              return "No results when searching for" & q
+              return "No results when searching for " & q
             end try
+            log q & "is Found !"
             set waitFlag to true
-            end if
           end if
         end if
         tell application "Spotify" to play track uri
@@ -216,7 +216,7 @@ on run argv
       repeat while waitFlag
         set nS to round (player position / 1) rounding down
         if nS as text is less than 3 then
-          set flag to false
+          set waitflag to false
         end if
       end repeat
       set shuf to ""
