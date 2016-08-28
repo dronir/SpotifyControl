@@ -20,6 +20,9 @@ on run argv
   set msg to msg & "  increasevolume N                      - Increment Volume by N (0...100)\n"
   set msg to msg & "  decreasevolume N                      - Decrement Volume by N (0...100)\n"
 
+
+  set waitFlag to false
+
   if count of argv is equal to 0 then
     return msg
   end if
@@ -52,7 +55,7 @@ on run argv
             if first word of uri is equal to "" then
               return "No results when searching for" & q
             else
-              set flag to true
+              set waitFlag to true
             end if
           end if
         end if
@@ -209,6 +212,12 @@ on run argv
 
     tell application "Spotify"
       delay 0.1
+      repeat while waitFlag
+        set nS to round (player position / 1) rounding down
+        if nS as text is less than 3 then
+          set flag to false
+        end if
+      end repeat
       set shuf to ""
       set rpt to ""
       if shuffling then 
