@@ -13,7 +13,7 @@ track, jumping in time, toggling shuffle/repeat and changing volume.
 This pretty much covers everything the AppleScript hooks of Spotify
 allow.
 
-### Tested Platforms (Spotify 1.0.34.146)
+### Tested Platforms (Spotify 1.0.36.124)
 * OS X El Captian (10.11)
 * OS X Yosemite (10.10)
 * OS X Mavericks (10.9)
@@ -36,6 +36,9 @@ ln -s $(pwd)/SpotifyControl /usr/local/bin/spotify
 * To start Spotify playback, type `spotify start` or `spotify play`. 
 If you do this locally and Spotify is not running, it will start. 
 Remotely, Spotify will not start properly. Optionally, pass a Spotify URI as a second argument.
+* To Search for track name and play, type `spotify play track [song name]`.
+* To Search for artist name and play, type `spotify play artist [artist name]`.
+* To Search for album name and play, type `spotify play album [album name]`.
 * To pause Spotify playback, type `spotify stop` or `spotify pause`.
 * To toggle playback, type `spotify play/pause`.
 * To go to the next track, type `spotify next`.
@@ -51,6 +54,8 @@ seconds to jump ahead.
 seconds to jump backwards.
 * To change volume, type `spotify volume N` where N is a number between
 0 and 100.
+* To increase volume, type `spotify volume up`.
+* To decrease volume, type `spotify volume down`.
 * Increase volume, type `spotify increasevolume N` where N is a number between
 0 and 100 that you want to increment by.
 * Decrease volume, type `spotify decreasevolume N` where N is a number between

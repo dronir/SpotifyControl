@@ -1,21 +1,28 @@
 #!/usr/bin/env osascript
 on run argv
+
+  set msg to "Use the following commands:\n"
+  set msg to msg & "  start, play [uri]                 - Start playback / play uri\n"
+  set msg to msg & "  start, play track  [song name]    - Search and play track\n"
+  set msg to msg & "  start, play artist [artist name]  - Search and play artist\n"
+  set msg to msg & "  start, play album  [album name]   - Search and play album\n"
+  set msg to msg & "  pause, stop                       - Stop playback\n"
+  set msg to msg & "  play/pause                        - Toggle playback\n"
+  set msg to msg & "  next                              - Next track\n"
+  set msg to msg & "  previous, prev                    - Previous track\n"
+  set msg to msg & "  info                              - Print track info\n"
+  set msg to msg & "  jump N                            - Jump to N seconds in the song\n"
+  set msg to msg & "  forward N                         - Jump N seconds forwards\n"
+  set msg to msg & "  rewind N                          - Jump N seconds backwards\n"
+  set msg to msg & "  shuffle                           - Toggle shuffle\n"
+  set msg to msg & "  repeat                            - Toggle repeat\n"
+  set msg to msg & "  volume N, up, down                - Set Volume to N (0...100)\n"
+  set msg to msg & "  increasevolume N                  - Increment Volume by N (0...100)\n"
+  set msg to msg & "  decreasevolume N                  - Decrement Volume by N (0...100)\n"
+
+  set waitFlag to false 
+
   if count of argv is equal to 0 then
-    set msg to "Use the following commands:\n"
-    set msg to msg & "  start, play [uri]  - Start playback / play uri\n"
-    set msg to msg & "  pause, stop        - Stop playback\n"
-    set msg to msg & "  play/pause         - Toggle playback\n"
-    set msg to msg & "  next               - Next track\n"
-    set msg to msg & "  previous, prev     - Previous track\n"
-    set msg to msg & "  info               - Print track info\n"
-    set msg to msg & "  jump N             - Jump to N seconds in the song\n"
-    set msg to msg & "  forward N          - Jump N seconds forwards\n"
-    set msg to msg & "  rewind N           - Jump N seconds backwards\n"
-    set msg to msg & "  shuffle            - Toggle shuffle\n"
-    set msg to msg & "  repeat             - Toggle repeat\n"
-    set msg to msg & "  volume N           - Set Volume to N (0...100)\n"
-    set msg to msg & "  increasevolume N   - Increment Volume by N (0...100)\n"
-    set msg to msg & "  decreasevolume N   - Decrement Volume by N (0...100)\n"
     return msg
   end if
   set command to item 1 of argv
@@ -26,7 +33,32 @@ on run argv
       if count of argv is equal to 1 then
         tell application "Spotify" to play
       else
-        set uri to item 2 of argv
+        set m_type to item 2 of argv
+        set uri to m_type
+        set modes to {"artist", "album", "track"}
+        if modes contains m_type then
+          if count of argv is equal to 2 then
+            return "Searching argument is missing ..."
+          else
+            set q to ""
+            repeat with myArgv from 3 to (count of argv)
+            set q to q & item myArgv of argv & " "
+            end repeat
+            log "Searching " & m_type & "s for : " & q
+            set spotifySearchAPI to "\"https://api.spotify.com/v1/search\""
+            try
+              set uri to do shell script  " curl s -G " & spotifySearchAPI & ¬
+                                          " --data-urlencode \"q=" & q & "\"" & ¬
+                                          " -d \"type=" & m_type & "&limit=1&offset=0\"" & ¬
+                                          " -H \"Accept: application/json\" | grep -E -o \"spotify:" & ¬
+                                          m_type & ":[a-zA-Z0-9]+\" -m 1"
+            on error
+              return "No results when searching for " & q
+            end try
+            log q & "is Found !"
+            set waitFlag to true
+          end if
+        end if
         tell application "Spotify" to play track uri
       end if
     -- Play/Pause 
@@ -97,12 +129,20 @@ on run argv
       end tell
     -- Volume
     else if command is equal to "volume" then
-      set newVolume to item 2 of argv as real
+      tell application "Spotify" to set lastVolume to sound volume
+      if item 2 of argv as text is equal to "up" then
+        set newVolume to lastVolume + 10
+      else if item 2 of argv as text is equal to "down" then
+        set newVolume to lastVolume - 10
+      else
+        set newVolume to item 2 of argv as real
+      end if  
       if newVolume < 0 then set newVolume to 0
       if newVolume > 100 then set newVolume to 100
       tell application "Spotify"
         set sound volume to newVolume
       end tell
+      delay 0.1
       return "Changed volume to " & newVolume
     -- IncreaseVolume
     else if command is equal to "increasevolume" then
@@ -165,10 +205,19 @@ on run argv
         if repeating then set info to info & "\n Repeat is on."
       end tell
       return info
+    else
+      log "Wrong Argument !\n"
+      return msg
     end if
 
     tell application "Spotify"
       delay 0.1
+      repeat while waitFlag
+        set nS to round (player position / 1) rounding down
+        if nS as text is less than 3 then
+          set waitFlag to false
+        end if
+      end repeat
       set shuf to ""
       set rpt to ""
       if shuffling then 
