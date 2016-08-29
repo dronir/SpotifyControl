@@ -38,13 +38,13 @@ on run argv
         set modes to {"artist", "album", "track"}
         if modes contains m_type then
           if count of argv is equal to 2 then
-            return "Searching argument is missing ..."
+            return "Search argument is missing..."
           else
             set q to ""
             repeat with myArgv from 3 to (count of argv)
-            set q to q & item myArgv of argv & " "
+                set q to q & item myArgv of argv & " "
             end repeat
-            log "Searching " & m_type & "s for : " & q
+            log "Searching " & m_type & "s for " & q
             set spotifySearchAPI to "\"https://api.spotify.com/v1/search\""
             try
               set uri to do shell script  " curl s -G " & spotifySearchAPI & ¬
@@ -53,9 +53,9 @@ on run argv
                                           " -H \"Accept: application/json\" | grep -E -o \"spotify:" & ¬
                                           m_type & ":[a-zA-Z0-9]+\" -m 1"
             on error
-              return "No results when searching for " & q
+              return "No results found for " & q
             end try
-            log q & "is Found !"
+            log q & "is Found!"
             set waitFlag to true
           end if
         end if
@@ -206,7 +206,7 @@ on run argv
       end tell
       return info
     else
-      log "Wrong Argument !\n"
+      log "\nCommand not recognized!\n"
       return msg
     end if
 

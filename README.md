@@ -54,8 +54,8 @@ seconds to jump ahead.
 seconds to jump backwards.
 * To change volume, type `spotify volume N` where N is a number between
 0 and 100.
-* To increase volume, type `spotify volume up`.
-* To decrease volume, type `spotify volume down`.
+* To increase volume by 10%, type `spotify volume up`.
+* To decrease volume by 10%, type `spotify volume down`.
 * Increase volume, type `spotify increasevolume N` where N is a number between
 0 and 100 that you want to increment by.
 * Decrease volume, type `spotify decreasevolume N` where N is a number between
