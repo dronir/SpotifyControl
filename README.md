@@ -27,7 +27,7 @@ The simplest way to install the script is to `clone` the repository,
 to make a symbolic link into `/usr/local/bin/`:
 
 ```bash
-ln -s $(pwd)/SpotifyControl /usr/local/bin/spotify
+make install
 ```
 
 
