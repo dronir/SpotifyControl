@@ -60,8 +60,8 @@ seconds to jump backwards.
 0 and 100 that you want to increment by.
 * Decrease volume, type `spotify decreasevolume N` where N is a number between
 0 and 100 that you want to decrement by.
-* To toggle shuffle, type `spotify shuffle`.
-* To toggle repeat, type `spotify repeat`.
+* To toggle shuffle, type `spotify shuffle [on|off]`.
+* To toggle repeat, type `spotify repeat [on|off]`.
 * To show a list of these commands, just type `spotify`.
 
 ### Over SSH

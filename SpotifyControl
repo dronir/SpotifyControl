@@ -168,18 +168,52 @@ on run argv
       return "Changed volume to " & newVolume
     -- Shuffle
     else if command is equal to "shuffle" then
-      tell application "Spotify"
-        set shuffling to not shuffling
-        delay 0.1
-        return "Shuffle is now " & shuffling
-      end tell
+      if count of argv is equal to 2 then
+        if item 2 of argv is equal to "on" then
+          tell application "Spotify"
+            set shuffling to true
+            delay 0.1
+            return "Shuffle is now " & shuffling
+          end tell
+        else if item 2 of argv is equal to "off" then
+          tell application "Spotify"
+            set shuffling to false
+            delay 0.1
+            return "Shuffle is now " & shuffling
+          end tell
+        end if
+      else
+        tell application "Spotify"
+          set shuffling to not shuffling
+          delay 0.1
+          return "Shuffle is now " & shuffling
+        end tell
+      end if
+      
     -- Repeat
     else if command is equal to "repeat" then
-      tell application "Spotify"
-        set repeating to not repeating
-        delay 0.1
-        return "Repeat is now " & repeating
-      end tell
+      if count of argv is equal to 2 then
+        if item 2 of argv is equal to "on" then
+          tell application "Spotify"
+            set repeating to true
+            delay 0.1
+            return "Shuffle is now " & repeating
+          end tell
+        else if item 2 of argv is equal to "off" then
+          tell application "Spotify"
+            set repeating to false
+            delay 0.1
+            return "Shuffle is now " & repeating
+          end tell
+        end if
+      else
+        tell application "Spotify"
+          set repeating to not repeating
+          delay 0.1
+          return "Repeat is now " & repeating
+        end tell
+      end if
+      
     -- Info
     else if command is equal to "info" then
       tell application "Spotify"
