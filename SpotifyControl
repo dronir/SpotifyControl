@@ -197,13 +197,13 @@ on run argv
           tell application "Spotify"
             set repeating to true
             delay 0.1
-            return "Shuffle is now " & repeating
+            return "Repeat is now " & repeating
           end tell
         else if item 2 of argv is equal to "off" then
           tell application "Spotify"
             set repeating to false
             delay 0.1
-            return "Shuffle is now " & repeating
+            return "Repeat is now " & repeating
           end tell
         end if
       else
