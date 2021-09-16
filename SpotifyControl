@@ -11,6 +11,7 @@ on run argv
   set msg to msg & "  next                              - Next track\n"
   set msg to msg & "  previous, prev                    - Previous track\n"
   set msg to msg & "  info                              - Print track info\n"
+  set msg to msg & "  shortinfo                         - Print track shortinfo with progress bar\n"
   set msg to msg & "  jump N                            - Jump to N seconds in the song\n"
   set msg to msg & "  forward N                         - Jump N seconds forwards\n"
   set msg to msg & "  rewind N                          - Jump N seconds backwards\n"
@@ -20,7 +21,7 @@ on run argv
   set msg to msg & "  increasevolume N                  - Increment Volume by N (0...100)\n"
   set msg to msg & "  decreasevolume N                  - Decrement Volume by N (0...100)\n"
 
-  set waitFlag to false 
+  set waitFlag to false
 
   if count of argv is equal to 0 then
     return msg
@@ -61,7 +62,7 @@ on run argv
         end if
         tell application "Spotify" to play track uri
       end if
-    -- Play/Pause 
+    -- Play/Pause
     else if command is equal to "play/pause" then
       tell application "Spotify" to playpause
       return "Toggled."
@@ -136,7 +137,7 @@ on run argv
         set newVolume to lastVolume - 10
       else
         set newVolume to item 2 of argv as real
-      end if  
+      end if
       if newVolume < 0 then set newVolume to 0
       if newVolume > 100 then set newVolume to 100
       tell application "Spotify"
@@ -239,6 +240,25 @@ on run argv
         if repeating then set info to info & "\n Repeat is on."
       end tell
       return info
+    else if command is equal to "shortinfo" then
+        tell application "Spotify"
+          set myTrack to name of current track
+          set myArtist to artist of current track
+          set myAlbum to album of current track
+          set percent to round ((player position / (duration of current track)) * 100000)
+          set info to ""
+          set info to info & myArtist & " - "
+          set info to info & myTrack
+          set info to info & " (" & myAlbum & ")\n["
+          repeat percent / 2.5 times
+              set info to info & "#"
+          end repeat
+          repeat 40 - percent / 2.5 times
+              set info to info & " "
+          end repeat
+          set info to info & "] " & percent & "%"
+        end tell
+        return info
     else
       log "\nCommand not recognized!\n"
       return msg
@@ -254,7 +274,7 @@ on run argv
       end repeat
       set shuf to ""
       set rpt to ""
-      if shuffling then 
+      if shuffling then
         set shuf to "\n[shuffle on]"
         if repeating then set rpt to "[repeat on]"
       else
